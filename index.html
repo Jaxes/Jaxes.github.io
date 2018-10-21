@@ -268,9 +268,7 @@
           steam的探索队列可能会显示“你所在的地区不提供此物品”，此时如何解决呢？
 用浏览器打开steam商店页面：
 然后按F12打开浏览器控制台（Console）：
-
-然后在右边输入以下代码：
-$J.post(&quot;/app/7&quot;, { sessionid: g_sessionID, appid_to_clear_from_queue: APPID });
+然后在右边输入以下代码：$J.post(&quot;/app/7&quot;, { sessionid: g_sessionID, appid_to_clear_from_queue: APPID });
 注意：其中的APPID由你当前队列的网址的以下数字串决定，把你对应的数字串替换上面代码的APPID即可
 
 

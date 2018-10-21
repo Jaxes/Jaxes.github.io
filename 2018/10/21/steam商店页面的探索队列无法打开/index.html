@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/10/21/steam商店页面的探索队列无法打开/home.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/21/steam商店页面的探索队列无法打开/console.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/21/steam商店页面的探索队列无法打开/appid.png">
-<meta property="og:updated_time" content="2018-10-21T15:52:03.551Z">
+<meta property="og:updated_time" content="2018-10-21T15:58:51.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="steam商店页面的探索队列无法打开">
 <meta name="twitter:description" content="steam的探索队列可能会显示“你所在的地区不提供此物品”，此时如何解决呢？">
@@ -198,10 +198,8 @@
       
         <p>steam的探索队列可能会显示“你所在的地区不提供此物品”，此时如何解决呢？</p>
 <h3 id="用浏览器打开steam商店页面："><a href="#用浏览器打开steam商店页面：" class="headerlink" title="用浏览器打开steam商店页面："></a>用浏览器打开steam商店页面：</h3><p><img src="/2018/10/21/steam商店页面的探索队列无法打开/home.png" alt="home"></p>
-<p>然后按F12打开浏览器控制台（Console）：</p>
-<p><img src="/2018/10/21/steam商店页面的探索队列无法打开/console.png" alt="console"></p>
-<p>然后在右边输入以下代码：</p>
-<p><code>$J.post(&quot;/app/7&quot;, { sessionid: g_sessionID, appid_to_clear_from_queue: APPID });</code></p>
+<h3 id="然后按F12打开浏览器控制台（Console）："><a href="#然后按F12打开浏览器控制台（Console）：" class="headerlink" title="然后按F12打开浏览器控制台（Console）："></a>然后按F12打开浏览器控制台（Console）：</h3><p><img src="/2018/10/21/steam商店页面的探索队列无法打开/console.png" alt="console"></p>
+<h3 id="然后在右边输入以下代码："><a href="#然后在右边输入以下代码：" class="headerlink" title="然后在右边输入以下代码："></a>然后在右边输入以下代码：</h3><p><code>$J.post(&quot;/app/7&quot;, { sessionid: g_sessionID, appid_to_clear_from_queue: APPID });</code></p>
 <p>注意：其中的<code>APPID</code>由你当前队列的网址的以下数字串决定，把你对应的数字串替换上面代码的<code>APPID</code>即可</p>
 <p><img src="/2018/10/21/steam商店页面的探索队列无法打开/appid.png" alt="appid"></p>
 
@@ -270,7 +268,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用浏览器打开steam商店页面："><span class="nav-number">1.</span> <span class="nav-text">用浏览器打开steam商店页面：</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用浏览器打开steam商店页面："><span class="nav-number">1.</span> <span class="nav-text">用浏览器打开steam商店页面：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#然后按F12打开浏览器控制台（Console）："><span class="nav-number">2.</span> <span class="nav-text">然后按F12打开浏览器控制台（Console）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#然后在右边输入以下代码："><span class="nav-number">3.</span> <span class="nav-text">然后在右边输入以下代码：</span></a></li></ol>
     
     </div>
   </aside>
