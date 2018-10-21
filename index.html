@@ -237,7 +237,7 @@
         
           <section id="main" style="float:none;">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-steam商店页面的探索队列无法打开" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -245,7 +245,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/21/hello-world/">Hello World</a>
+      <a class="article-title" href="/2018/10/21/steam商店页面的探索队列无法打开/">steam商店页面的探索队列无法打开</a>
     </h1>
   
 
@@ -253,21 +253,30 @@
     
     <div class="article-meta">
       
-	<a href="/2018/10/21/hello-world/" class="article-date">
-	  <time datetime="2018-10-21T10:36:14.728Z" itemprop="datePublished">2018-10-21</time>
+	<a href="/2018/10/21/steam商店页面的探索队列无法打开/" class="article-date">
+	  <time datetime="2018-10-21T15:43:04.000Z" itemprop="datePublished">2018-10-21</time>
 	</a>
 
       
+    <a class="article-category-link" href="/categories/杂项/">杂项</a>
+
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
         <p class="article-excerpt-content">
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new "My New Post...
+          steam的探索队列可能会显示“你所在的地区不提供此物品”，此时如何解决呢？
+用浏览器打开steam商店页面：
+然后按F12打开浏览器控制台（Console）：
+
+然后在右边输入以下代码：
+$J.post(&quot;/app/7&quot;, { sessionid: g_sessionID, appid_to_clear_from_queue: APPID });
+注意：其中的APPID由你当前队列的网址的以下数字串决定，把你对应的数字串替换上面代码的APPID即可
+
+
         </p>
         <p class="article-more-link">
-          <a href="/2018/10/21/hello-world/#more">阅读全文</a>
+          <a href="/2018/10/21/steam商店页面的探索队列无法打开/#more">阅读全文</a>
         </p>
       
     </div>
