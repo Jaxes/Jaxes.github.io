@@ -237,6 +237,61 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Unity界面UGUI遮挡的问题" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/10/22/Unity界面UGUI遮挡的问题/">Unity界面UGUI遮挡的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/22/Unity界面UGUI遮挡的问题/" class="article-date">
+	  <time datetime="2018-10-22T12:22:45.000Z" itemprop="datePublished">2018-10-22</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Unity/">Unity</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          解决方法：在使用Unity的UGUI时候，重叠的UI控件可能会导致某一个控件点击失败，如下图：
+
+在前面的图片挡住了后面的Button，导致后面的Button无法触发点击事件，此时只要把图片的Image组件的Raycast Target的勾选取消即可解决遮挡的问题：
+
+原理：鼠标点击屏幕实际上是以点击的点为原点，发射一条垂直屏幕向里的射线，然后通过射线与第一个物体的相交来判断是否点击到该物体。取消了Raycast Target选项表明不作为射线相交的对象，则不会挡住后面的Button
+
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/22/Unity界面UGUI遮挡的问题/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-steam商店页面的探索队列无法打开" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     

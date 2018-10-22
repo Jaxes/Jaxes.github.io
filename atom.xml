@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-21T16:04:55.042Z</updated>
+  <updated>2018-10-22T13:39:42.152Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity界面UGUI遮挡的问题</title>
+    <link href="http://yoursite.com/2018/10/22/Unity%E7%95%8C%E9%9D%A2UGUI%E9%81%AE%E6%8C%A1%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2018/10/22/Unity界面UGUI遮挡的问题/</id>
+    <published>2018-10-22T12:22:45.000Z</published>
+    <updated>2018-10-22T13:39:42.152Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>在使用Unity的UGUI时候，重叠的UI控件可能会导致某一个控件点击失败，如下图：</p><p><img src="/2018/10/22/Unity界面UGUI遮挡的问题/pause.png" alt=""></p><p>在前面的图片挡住了后面的Button，导致后面的Button无法触发点击事件，此时只要把图片的Image组件的<code>Raycast Target</code>的勾选取消即可解决遮挡的问题：</p><p><img src="/2018/10/22/Unity界面UGUI遮挡的问题/image.png" alt=""></p><h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p>鼠标点击屏幕实际上是以点击的点为原点，发射一条垂直屏幕向里的射线，然后通过射线与第一个物体的相交来判断是否点击到该物体。取消了<code>Raycast Target</code>选项表明不作为射线相交的对象，则不会挡住后面的Button</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;解决方法：&quot;&gt;&lt;a href=&quot;#解决方法：&quot; class=&quot;headerlink&quot; title=&quot;解决方法：&quot;&gt;&lt;/a&gt;解决方法：&lt;/h3&gt;&lt;p&gt;在使用Unity的UGUI时候，重叠的UI控件可能会导致某一个控件点击失败，如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src
+      
+    
+    </summary>
+    
+      <category term="Unity" scheme="http://yoursite.com/categories/Unity/"/>
+    
+    
+      <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
+    
+      <category term="游戏开发" scheme="http://yoursite.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>steam商店页面的探索队列无法打开</title>
