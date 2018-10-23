@@ -237,6 +237,58 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Unity终止协程的问题" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/10/23/Unity终止协程的问题/">Unity终止协程的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/23/Unity终止协程的问题/" class="article-date">
+	  <time datetime="2018-10-23T15:17:30.000Z" itemprop="datePublished">2018-10-23</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Unity/">Unity</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          最近在做项目的时候发现，调用StopCoroutine()来终止一个正在运行的协程的时候，无法终止协程。然后通过查资料发现了一下两种办法：
+利用字符来启动和终止协程：比如，我有一个协程IEnumerator MoveAnimation()，启动时要用StartCoroutine(&quot;MoveAnimation&quot;)，终止的时候用StopCoroutine(&quot;MoveAnimation&quot;)，才能正确终止协程。
+要想传参，可以使用 StartCoroutin...
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/23/Unity终止协程的问题/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-Unity界面UGUI遮挡的问题" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
