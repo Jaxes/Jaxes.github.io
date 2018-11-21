@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-28T07:01:04.518Z</updated>
+  <updated>2018-11-21T14:16:31.498Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity3D学习笔记之碰撞器和触发器</title>
+    <link href="http://yoursite.com/2018/11/21/Unity3D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%A2%B0%E6%92%9E%E5%99%A8%E5%92%8C%E8%A7%A6%E5%8F%91%E5%99%A8/"/>
+    <id>http://yoursite.com/2018/11/21/Unity3D学习笔记之碰撞器和触发器/</id>
+    <published>2018-11-21T14:15:22.000Z</published>
+    <updated>2018-11-21T14:16:31.498Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="碰撞器种类："><a href="#碰撞器种类：" class="headerlink" title="碰撞器种类："></a>碰撞器种类：</h2><ol><li>Box Collider（盒碰撞器）——立方体</li><li>Sphere Collider（球碰撞器）——球体</li><li>Capsule Collider（胶囊碰撞器）——胶囊体</li><li>Mesh Collider（网格碰撞器）——从物体的网格创建一个碰撞器，不能与其他网格碰撞器相碰撞</li><li>Wheel Collider（轮碰撞器）——特殊的碰撞器，用于创建车或其他的交通工具的车轮</li></ol><h2 id="碰撞器属性："><a href="#碰撞器属性：" class="headerlink" title="碰撞器属性："></a>碰撞器属性：</h2><ol><li>Material：材质</li><li>Is Trigger：开启触发器</li><li>Radius：半径</li><li>Center：中心</li><li>Size：碰撞器的大小</li><li>Convex（网格碰撞器特有）：如激活，该网格碰撞器将会和其他网格碰撞器碰撞，突起的网格碰撞器限制在255个三角形面内。</li></ol><h2 id="碰撞器类型："><a href="#碰撞器类型：" class="headerlink" title="碰撞器类型："></a>碰撞器类型：</h2><ol><li>Static Collider（静态碰撞器）：只有碰撞器，没有刚体。基本保持静止或者轻微的移动，一般应用于环境模型，和刚体碰撞时不会移动</li><li>Rigidbody Collider（刚体碰撞器）：同时附加了刚体和碰撞器。移动完全受脚本和物理引擎的影响。</li><li>Kinematic Rigidbody Collider（运动学刚体碰撞器）：同时附加刚体和碰撞器，并且激活刚体组件的IsKinematic。移动必须通过修改其Transform组件，不受力的影响。能影响其他的刚体，和其他碰撞器碰撞时不会受影响，但是会触发碰撞函数。</li><li>Character Controllers（角色控制器）：允许高速运动时立刻转身，可以执行碰撞检测保证角色可以沿墙滑动或者上下台阶。受重力影响，不受碰撞产生的力影响，可以由代码施加的力推动。不具有物理特性。如果想让角色控制器推开其他刚体或者对象，可以在对象附加的脚本中添加OnControllerColliderHit()函数，使得碰撞生效。</li></ol><h2 id="触发器："><a href="#触发器：" class="headerlink" title="触发器："></a>触发器：</h2><p>在碰撞器的属性面版上勾选上IsTrigger便成为了触发器</p><p>两者区别：碰撞器根据物理引擎引发碰撞，产生碰撞的效果；触发器被物理引擎所忽略，没有碰撞效果</p><h2 id="碰撞信息检测函数："><a href="#碰撞信息检测函数：" class="headerlink" title="碰撞信息检测函数："></a>碰撞信息检测函数：</h2><ol><li>OnCollisionEnter(Collision collision)当开始产生碰撞时调用此函数</li><li>OnCollisionExit(Collision collision)当结束碰撞时调用此函数</li><li>OnCollisionStay(Collision collision)当持续接触时调用此函数</li></ol><h2 id="触发信息检测函数："><a href="#触发信息检测函数：" class="headerlink" title="触发信息检测函数："></a>触发信息检测函数：</h2><p>基本和碰撞信息检测函数类似</p><ol><li>OnTriggerEnter(Collision collision)</li><li>OnTriggerExit(Collision collision)</li><li>OnTriggerStay(Collision collision)</li></ol><h2 id="碰撞信息和触发信息："><a href="#碰撞信息和触发信息：" class="headerlink" title="碰撞信息和触发信息："></a>碰撞信息和触发信息：</h2><p>​                                <strong>碰撞后有碰撞检测并有碰撞信息发出</strong></p><table><thead><tr><th style="text-align:center"></th><th style="text-align:center">Static Collider 静态碰撞器</th><th style="text-align:center">Rigidbody Collider 刚体碰撞器</th><th style="text-align:center">Kinematic  Rigidbody Collider 运动学刚体碰撞器</th><th style="text-align:center">Static  Trigger Collider 静态触发碰撞器</th><th style="text-align:center">Rigidbody  Trigger Collider 刚体触发碰撞器</th><th style="text-align:center">Kinematic Rigidbody  Trigger Collider 运动学刚体触发碰撞器</th></tr></thead><tbody><tr><td style="text-align:center">Static Collider 静态碰撞器</td><td style="text-align:center"></td><td style="text-align:center">Y</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">Rigidbody Collider 刚体碰撞器</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">Kinematic Rigidbody Collider  运动学刚体碰撞器</td><td style="text-align:center"></td><td style="text-align:center">Y</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">Static Trigger Collider 静态触发碰撞器</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">Rigidbody Trigger Collider 刚体触发碰撞器</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">Kinematic Rigidbody Trigger Collider 运动学刚体触发碰撞器</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr></tbody></table><p>​                                        <strong>碰撞后有触发信息</strong></p><table><thead><tr><th style="text-align:center"></th><th style="text-align:center">Static Collider 静态碰撞器</th><th style="text-align:center">Rigidbody Collider 刚体碰撞器</th><th style="text-align:center">Kinematic  Rigidbody Collider 运动学刚体碰撞器</th><th style="text-align:center">Static  Trigger Collider 静态触发碰撞器</th><th style="text-align:center">Rigidbody  Trigger Collider 刚体触发碰撞器</th><th style="text-align:center">Kinematic Rigidbody  Trigger Collider 运动学刚体触发碰撞器</th></tr></thead><tbody><tr><td style="text-align:center">Static Collider 静态碰撞器</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">Y</td><td style="text-align:center">Y</td></tr><tr><td style="text-align:center">Rigidbody Collider 刚体碰撞器</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td></tr><tr><td style="text-align:center">Kinematic Rigidbody Collider 运动学刚体碰撞器</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td></tr><tr><td style="text-align:center">Static Trigger Collider 静态触发碰撞器</td><td style="text-align:center"></td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center"></td><td style="text-align:center">Y</td><td style="text-align:center">Y</td></tr><tr><td style="text-align:center">Rigidbody Trigger Collider 刚体触发碰撞器</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td></tr><tr><td style="text-align:center">Kinematic Rigidbody Trigger Collider 运动学刚体触发碰撞器</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td><td style="text-align:center">Y</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;碰撞器种类：&quot;&gt;&lt;a href=&quot;#碰撞器种类：&quot; class=&quot;headerlink&quot; title=&quot;碰撞器种类：&quot;&gt;&lt;/a&gt;碰撞器种类：&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Box Collider（盒碰撞器）——立方体&lt;/li&gt;
+&lt;li&gt;Sphere Collider
+      
+    
+    </summary>
+    
+      <category term="Unity" scheme="http://yoursite.com/categories/Unity/"/>
+    
+    
+      <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
+    
+      <category term="游戏开发" scheme="http://yoursite.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Unity3D学习笔记之Rigidbody(刚体组件)</title>

@@ -3,7 +3,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>unity3d学习笔记之rigidbody(刚体组件) | Jaxes的博客</title>
+  <title>unity3d学习笔记之碰撞器和触发器 | Jaxes的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Unity, 游戏开发">
@@ -11,20 +11,18 @@
   
   
   
-  <meta name="description" content="Rigidbody面板各属性： Mass（质量）：单位kg  Drag（阻力）  Angular Drag（角阻力）  Use Gravity（开启重力）  Is Kinematic（开启动力学模式）：开启之后将不在受物理引擎的影响而只能通过Transform属性来操作，这个选项适用于模拟平台的移动或带有铰链关节连接刚体的动画。  Interpolate（插值）： ​    None：没有插值。">
+  <meta name="description" content="碰撞器种类： Box Collider（盒碰撞器）——立方体 Sphere Collider（球碰撞器）——球体 Capsule Collider（胶囊碰撞器）——胶囊体 Mesh Collider（网格碰撞器）——从物体的网格创建一个碰撞器，不能与其他网格碰撞器相碰撞 Wheel Collider（轮碰撞器）——特殊的碰撞器，用于创建车或其他的交通工具的车轮  碰撞器属性： Material：材">
 <meta name="keywords" content="Unity, 游戏开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity3D学习笔记之Rigidbody(刚体组件)">
-<meta property="og:url" content="http://yoursite.com/2018/10/28/Unity3D学习笔记之Rigidbody-刚体组件/index.html">
+<meta property="og:title" content="Unity3D学习笔记之碰撞器和触发器">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/Unity3D学习笔记之碰撞器和触发器/index.html">
 <meta property="og:site_name" content="Jaxes的博客">
-<meta property="og:description" content="Rigidbody面板各属性： Mass（质量）：单位kg  Drag（阻力）  Angular Drag（角阻力）  Use Gravity（开启重力）  Is Kinematic（开启动力学模式）：开启之后将不在受物理引擎的影响而只能通过Transform属性来操作，这个选项适用于模拟平台的移动或带有铰链关节连接刚体的动画。  Interpolate（插值）： ​    None：没有插值。">
+<meta property="og:description" content="碰撞器种类： Box Collider（盒碰撞器）——立方体 Sphere Collider（球碰撞器）——球体 Capsule Collider（胶囊碰撞器）——胶囊体 Mesh Collider（网格碰撞器）——从物体的网格创建一个碰撞器，不能与其他网格碰撞器相碰撞 Wheel Collider（轮碰撞器）——特殊的碰撞器，用于创建车或其他的交通工具的车轮  碰撞器属性： Material：材">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/10/28/Unity3D学习笔记之Rigidbody-刚体组件/matrix.jpg">
-<meta property="og:updated_time" content="2018-10-28T07:01:04.518Z">
+<meta property="og:updated_time" content="2018-11-21T14:16:31.498Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unity3D学习笔记之Rigidbody(刚体组件)">
-<meta name="twitter:description" content="Rigidbody面板各属性： Mass（质量）：单位kg  Drag（阻力）  Angular Drag（角阻力）  Use Gravity（开启重力）  Is Kinematic（开启动力学模式）：开启之后将不在受物理引擎的影响而只能通过Transform属性来操作，这个选项适用于模拟平台的移动或带有铰链关节连接刚体的动画。  Interpolate（插值）： ​    None：没有插值。">
-<meta name="twitter:image" content="http://yoursite.com/2018/10/28/Unity3D学习笔记之Rigidbody-刚体组件/matrix.jpg">
+<meta name="twitter:title" content="Unity3D学习笔记之碰撞器和触发器">
+<meta name="twitter:description" content="碰撞器种类： Box Collider（盒碰撞器）——立方体 Sphere Collider（球碰撞器）——球体 Capsule Collider（胶囊碰撞器）——胶囊体 Mesh Collider（网格碰撞器）——从物体的网格创建一个碰撞器，不能与其他网格碰撞器相碰撞 Wheel Collider（轮碰撞器）——特殊的碰撞器，用于创建车或其他的交通工具的车轮  碰撞器属性： Material：材">
   
     <link rel="alternate" href="/atom.xml" title="Jaxes的博客" type="application/atom+xml">
   
@@ -161,7 +159,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Unity3D学习笔记之Rigidbody-刚体组件" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Unity3D学习笔记之碰撞器和触发器" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -169,7 +167,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      Unity3D学习笔记之Rigidbody(刚体组件)
+      Unity3D学习笔记之碰撞器和触发器
     </h1>
   
 
@@ -177,8 +175,8 @@
     
     <div class="article-meta">
       
-	<a href="/2018/10/28/Unity3D学习笔记之Rigidbody-刚体组件/" class="article-date">
-	  <time datetime="2018-10-28T06:38:54.000Z" itemprop="datePublished">2018-10-28</time>
+	<a href="/2018/11/21/Unity3D学习笔记之碰撞器和触发器/" class="article-date">
+	  <time datetime="2018-11-21T14:15:22.000Z" itemprop="datePublished">2018-11-21</time>
 	</a>
 
       
@@ -194,67 +192,179 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Rigidbody面板各属性："><a href="#Rigidbody面板各属性：" class="headerlink" title="Rigidbody面板各属性："></a>Rigidbody面板各属性：</h2><ol>
-<li><p>Mass（质量）：单位kg</p>
-</li>
-<li><p>Drag（阻力）</p>
-</li>
-<li><p>Angular Drag（角阻力）</p>
-</li>
-<li><p>Use Gravity（开启重力）</p>
-</li>
-<li><p>Is Kinematic（开启动力学模式）：开启之后将不在受物理引擎的影响而只能通过Transform属性来操作，这个选项适用于模拟平台的移动或带有铰链关节连接刚体的动画。</p>
-</li>
-<li><p>Interpolate（插值）：</p>
-<p>​    None：没有插值。</p>
-<p>​    Interpolate：内插值，基于前一帧的Transform来平滑的此次的Transform。</p>
-<p>​    Extrapolate：外插值，基于后一帧的Transform来平滑的此次的Transform。</p>
-</li>
-<li><p>Collision Detection（碰撞检测模式）：</p>
-<p>​    Discrete：默认选项，检测场景中其他所有碰撞体进行碰撞检测。</p>
-<p>​    Continuous：连续碰撞检测。此模式适用于那些需要与采用了连续动态碰撞检测的对象相碰撞的对象。</p>
-<p>​    Continuous Dynamic：连续动态检测模式。</p>
-</li>
-<li><p>Constraints（束缚）：</p>
-<p>Freeze Position（位置冻结）</p>
-<p>Freeze Rotation（角度冻结）</p>
-</li>
+        <h2 id="碰撞器种类："><a href="#碰撞器种类：" class="headerlink" title="碰撞器种类："></a>碰撞器种类：</h2><ol>
+<li>Box Collider（盒碰撞器）——立方体</li>
+<li>Sphere Collider（球碰撞器）——球体</li>
+<li>Capsule Collider（胶囊碰撞器）——胶囊体</li>
+<li>Mesh Collider（网格碰撞器）——从物体的网格创建一个碰撞器，不能与其他网格碰撞器相碰撞</li>
+<li>Wheel Collider（轮碰撞器）——特殊的碰撞器，用于创建车或其他的交通工具的车轮</li>
 </ol>
-<h2 id="脚本中控制刚体的常用方法："><a href="#脚本中控制刚体的常用方法：" class="headerlink" title="脚本中控制刚体的常用方法："></a>脚本中控制刚体的常用方法：</h2><ol>
-<li>AddForce：添加一个力到刚体，使刚体开始移动</li>
-<li>AddForceAtPosition：施加在某一个点上的力，这将可能在物体上施加扭矩力</li>
-<li>Addtorque：为刚体增加一个扭矩</li>
-<li>IsSleeping：判断刚体是否被休眠</li>
-<li>MovePosition：移动刚体到某个位置</li>
-<li>MoveRotation：使刚体旋转到某个位置</li>
-<li>Sleep：使刚体至少休眠一帧</li>
-<li>WakeUp：使刚体终止休眠</li>
-<li>GetPointVelocity：获取刚体的绝对速度</li>
-<li>GetRelativePointVelocity：获取刚体相对于某点的速度</li>
-<li>ResetInertiaTensor：重置惯性张量和旋转</li>
+<h2 id="碰撞器属性："><a href="#碰撞器属性：" class="headerlink" title="碰撞器属性："></a>碰撞器属性：</h2><ol>
+<li>Material：材质</li>
+<li>Is Trigger：开启触发器</li>
+<li>Radius：半径</li>
+<li>Center：中心</li>
+<li>Size：碰撞器的大小</li>
+<li>Convex（网格碰撞器特有）：如激活，该网格碰撞器将会和其他网格碰撞器碰撞，突起的网格碰撞器限制在255个三角形面内。</li>
 </ol>
-<h2 id="刚体物理学知识补充："><a href="#刚体物理学知识补充：" class="headerlink" title="刚体物理学知识补充："></a>刚体物理学知识补充：</h2><ol>
-<li><p>刚体：指在运动中和受力作用后，形状和大小不变，而且内部各点的相对位置不变的物体。</p>
-</li>
-<li><p>惯性张量：描述刚体绕点旋转的惯性大小</p>
-</li>
-<li><p>转动惯量：描述刚体绕轴旋转的惯性大小</p>
-</li>
-<li><p>惯性张量与转动惯量的关系：</p>
-<p>对于三维空间中任意一参考点 K与以此参考点为原点的直角坐标系的惯性张量<strong>I</strong>可以表示为下面的3X3的矩阵</p>
-<p><img src="/2018/10/28/Unity3D学习笔记之Rigidbody-刚体组件/matrix.jpg" alt=""></p>
-<p>这里，矩阵的对角元素 Ixx、Iyy、Izz分别为对于 x-轴、y-轴、z-轴的转动惯量</p>
-</li>
+<h2 id="碰撞器类型："><a href="#碰撞器类型：" class="headerlink" title="碰撞器类型："></a>碰撞器类型：</h2><ol>
+<li>Static Collider（静态碰撞器）：只有碰撞器，没有刚体。基本保持静止或者轻微的移动，一般应用于环境模型，和刚体碰撞时不会移动</li>
+<li>Rigidbody Collider（刚体碰撞器）：同时附加了刚体和碰撞器。移动完全受脚本和物理引擎的影响。</li>
+<li>Kinematic Rigidbody Collider（运动学刚体碰撞器）：同时附加刚体和碰撞器，并且激活刚体组件的IsKinematic。移动必须通过修改其Transform组件，不受力的影响。能影响其他的刚体，和其他碰撞器碰撞时不会受影响，但是会触发碰撞函数。</li>
+<li>Character Controllers（角色控制器）：允许高速运动时立刻转身，可以执行碰撞检测保证角色可以沿墙滑动或者上下台阶。受重力影响，不受碰撞产生的力影响，可以由代码施加的力推动。不具有物理特性。如果想让角色控制器推开其他刚体或者对象，可以在对象附加的脚本中添加OnControllerColliderHit()函数，使得碰撞生效。</li>
 </ol>
-<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><ol>
-<li>操作一个物体可以操作其刚体或者Transform属性，两者选其一即可；</li>
-<li>使用物理系统时可以通过在游戏对象的刚体上添加AddForce()或者AddTorque()函数达到通过脚本来添加作用力或扭矩力，来对刚体进行控制；</li>
-<li>使用刚体组件也要同时使用碰撞器组件；</li>
-<li>父子对象不应该同时具有刚体；</li>
-<li>不应该缩放刚体的父级。</li>
-<li>运动学刚体不受力、碰撞或关节控制，完全由动画或代码（控制Transform属性）驱动，但运动学刚体可以通过碰撞或关节影响其他刚体的运动。非运动学刚体则受力、碰撞或关节控制。</li>
+<h2 id="触发器："><a href="#触发器：" class="headerlink" title="触发器："></a>触发器：</h2><p>在碰撞器的属性面版上勾选上IsTrigger便成为了触发器</p>
+<p>两者区别：碰撞器根据物理引擎引发碰撞，产生碰撞的效果；触发器被物理引擎所忽略，没有碰撞效果</p>
+<h2 id="碰撞信息检测函数："><a href="#碰撞信息检测函数：" class="headerlink" title="碰撞信息检测函数："></a>碰撞信息检测函数：</h2><ol>
+<li>OnCollisionEnter(Collision collision)当开始产生碰撞时调用此函数</li>
+<li>OnCollisionExit(Collision collision)当结束碰撞时调用此函数</li>
+<li>OnCollisionStay(Collision collision)当持续接触时调用此函数</li>
 </ol>
-<h2 id="详细API请参考："><a href="#详细API请参考：" class="headerlink" title="详细API请参考："></a>详细API请参考：</h2><p><a href="https://docs.unity3d.com/ScriptReference/Rigidbody.html" target="_blank" rel="noopener">https://docs.unity3d.com/ScriptReference/Rigidbody.html</a></p>
+<h2 id="触发信息检测函数："><a href="#触发信息检测函数：" class="headerlink" title="触发信息检测函数："></a>触发信息检测函数：</h2><p>基本和碰撞信息检测函数类似</p>
+<ol>
+<li>OnTriggerEnter(Collision collision)</li>
+<li>OnTriggerExit(Collision collision)</li>
+<li>OnTriggerStay(Collision collision)</li>
+</ol>
+<h2 id="碰撞信息和触发信息："><a href="#碰撞信息和触发信息：" class="headerlink" title="碰撞信息和触发信息："></a>碰撞信息和触发信息：</h2><p>​                                <strong>碰撞后有碰撞检测并有碰撞信息发出</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Static Collider 静态碰撞器</th>
+<th style="text-align:center">Rigidbody Collider 刚体碰撞器</th>
+<th style="text-align:center">Kinematic  Rigidbody Collider 运动学刚体碰撞器</th>
+<th style="text-align:center">Static  Trigger Collider 静态触发碰撞器</th>
+<th style="text-align:center">Rigidbody  Trigger Collider 刚体触发碰撞器</th>
+<th style="text-align:center">Kinematic Rigidbody  Trigger Collider 运动学刚体触发碰撞器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Static Collider 静态碰撞器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Rigidbody Collider 刚体碰撞器</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Kinematic Rigidbody Collider  运动学刚体碰撞器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Static Trigger Collider 静态触发碰撞器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Rigidbody Trigger Collider 刚体触发碰撞器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Kinematic Rigidbody Trigger Collider 运动学刚体触发碰撞器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>​                                        <strong>碰撞后有触发信息</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Static Collider 静态碰撞器</th>
+<th style="text-align:center">Rigidbody Collider 刚体碰撞器</th>
+<th style="text-align:center">Kinematic  Rigidbody Collider 运动学刚体碰撞器</th>
+<th style="text-align:center">Static  Trigger Collider 静态触发碰撞器</th>
+<th style="text-align:center">Rigidbody  Trigger Collider 刚体触发碰撞器</th>
+<th style="text-align:center">Kinematic Rigidbody  Trigger Collider 运动学刚体触发碰撞器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Static Collider 静态碰撞器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+</tr>
+<tr>
+<td style="text-align:center">Rigidbody Collider 刚体碰撞器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+</tr>
+<tr>
+<td style="text-align:center">Kinematic Rigidbody Collider 运动学刚体碰撞器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+</tr>
+<tr>
+<td style="text-align:center">Static Trigger Collider 静态触发碰撞器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+</tr>
+<tr>
+<td style="text-align:center">Rigidbody Trigger Collider 刚体触发碰撞器</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+</tr>
+<tr>
+<td style="text-align:center">Kinematic Rigidbody Trigger Collider 运动学刚体触发碰撞器</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -268,7 +378,7 @@
           </li>
           <li class="post-copyright-link">
           <strong>本文链接:  </strong>
-          <a href="/2018/10/28/Unity3D学习笔记之Rigidbody-刚体组件/" target="_blank" title="Unity3D学习笔记之Rigidbody(刚体组件)">http://yoursite.com/2018/10/28/Unity3D学习笔记之Rigidbody-刚体组件/</a>
+          <a href="/2018/11/21/Unity3D学习笔记之碰撞器和触发器/" target="_blank" title="Unity3D学习笔记之碰撞器和触发器">http://yoursite.com/2018/11/21/Unity3D学习笔记之碰撞器和触发器/</a>
           </li>
           <li class="post-copyright-license">
             <strong>版权声明:   </strong>
@@ -314,19 +424,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/11/21/Unity3D学习笔记之碰撞器和触发器/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          Unity3D学习笔记之碰撞器和触发器
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/10/25/C++的ifstream中使用eof最后一个字符输出两次，其实不是eof的锅！/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/10/28/Unity3D学习笔记之Rigidbody-刚体组件/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">C++的ifstream中使用eof最后一个字符输出两次，其实不是eof的锅！</div>
+      <div class="article-nav-title">Unity3D学习笔记之Rigidbody(刚体组件)</div>
     </a>
   
 </nav>
@@ -340,7 +441,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rigidbody面板各属性："><span class="nav-number">1.</span> <span class="nav-text">Rigidbody面板各属性：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本中控制刚体的常用方法："><span class="nav-number">2.</span> <span class="nav-text">脚本中控制刚体的常用方法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#刚体物理学知识补充："><span class="nav-number">3.</span> <span class="nav-text">刚体物理学知识补充：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项："><span class="nav-number">4.</span> <span class="nav-text">注意事项：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#详细API请参考："><span class="nav-number">5.</span> <span class="nav-text">详细API请参考：</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#碰撞器种类："><span class="nav-number">1.</span> <span class="nav-text">碰撞器种类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#碰撞器属性："><span class="nav-number">2.</span> <span class="nav-text">碰撞器属性：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#碰撞器类型："><span class="nav-number">3.</span> <span class="nav-text">碰撞器类型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#触发器："><span class="nav-number">4.</span> <span class="nav-text">触发器：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#碰撞信息检测函数："><span class="nav-number">5.</span> <span class="nav-text">碰撞信息检测函数：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#触发信息检测函数："><span class="nav-number">6.</span> <span class="nav-text">触发信息检测函数：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#碰撞信息和触发信息："><span class="nav-number">7.</span> <span class="nav-text">碰撞信息和触发信息：</span></a></li></ol>
     
     </div>
   </aside>
