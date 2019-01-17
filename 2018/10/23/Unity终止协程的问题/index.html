@@ -11,18 +11,18 @@
   
   
   
-  <meta name="description" content="最近在做项目的时候发现，调用StopCoroutine()来终止一个正在运行的协程的时候，无法终止协程。然后通过查资料发现了一下两种办法： 利用字符串来启动和终止协程：比如，我有一个协程IEnumerator MoveAnimation()，启动时要用StartCoroutine(&amp;quot;MoveAnimation&amp;quot;)，终止的时候用StopCoroutine(&amp;quot;MoveAn">
+  <meta name="description" content="最近在项目开发的时候发现，调用StopCoroutine()来终止一个正在运行的协程的时候，无法终止协程。然后通过查资料发现了一下两种办法： 利用字符串来启动和终止协程：比如，我有一个协程IEnumerator MoveAnimation()，启动时要用StartCoroutine(&amp;quot;MoveAnimation&amp;quot;)，终止的时候用StopCoroutine(&amp;quot;MoveA">
 <meta name="keywords" content="Unity, 开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity终止协程的问题">
 <meta property="og:url" content="http://yoursite.com/2018/10/23/Unity终止协程的问题/index.html">
 <meta property="og:site_name" content="Jaxes的博客">
-<meta property="og:description" content="最近在做项目的时候发现，调用StopCoroutine()来终止一个正在运行的协程的时候，无法终止协程。然后通过查资料发现了一下两种办法： 利用字符串来启动和终止协程：比如，我有一个协程IEnumerator MoveAnimation()，启动时要用StartCoroutine(&amp;quot;MoveAnimation&amp;quot;)，终止的时候用StopCoroutine(&amp;quot;MoveAn">
+<meta property="og:description" content="最近在项目开发的时候发现，调用StopCoroutine()来终止一个正在运行的协程的时候，无法终止协程。然后通过查资料发现了一下两种办法： 利用字符串来启动和终止协程：比如，我有一个协程IEnumerator MoveAnimation()，启动时要用StartCoroutine(&amp;quot;MoveAnimation&amp;quot;)，终止的时候用StopCoroutine(&amp;quot;MoveA">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-23T15:36:11.258Z">
+<meta property="og:updated_time" content="2019-01-17T07:17:59.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity终止协程的问题">
-<meta name="twitter:description" content="最近在做项目的时候发现，调用StopCoroutine()来终止一个正在运行的协程的时候，无法终止协程。然后通过查资料发现了一下两种办法： 利用字符串来启动和终止协程：比如，我有一个协程IEnumerator MoveAnimation()，启动时要用StartCoroutine(&amp;quot;MoveAnimation&amp;quot;)，终止的时候用StopCoroutine(&amp;quot;MoveAn">
+<meta name="twitter:description" content="最近在项目开发的时候发现，调用StopCoroutine()来终止一个正在运行的协程的时候，无法终止协程。然后通过查资料发现了一下两种办法： 利用字符串来启动和终止协程：比如，我有一个协程IEnumerator MoveAnimation()，启动时要用StartCoroutine(&amp;quot;MoveAnimation&amp;quot;)，终止的时候用StopCoroutine(&amp;quot;MoveA">
   
     <link rel="alternate" href="/atom.xml" title="Jaxes的博客" type="application/atom+xml">
   
@@ -192,7 +192,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近在做项目的时候发现，调用<code>StopCoroutine()</code>来终止一个正在运行的协程的时候，无法终止协程。然后通过查资料发现了一下两种办法：</p>
+        <p>最近在项目开发的时候发现，调用<code>StopCoroutine()</code>来终止一个正在运行的协程的时候，无法终止协程。然后通过查资料发现了一下两种办法：</p>
 <h3 id="利用字符串来启动和终止协程："><a href="#利用字符串来启动和终止协程：" class="headerlink" title="利用字符串来启动和终止协程："></a>利用字符串来启动和终止协程：</h3><p>比如，我有一个协程<code>IEnumerator MoveAnimation()</code>，启动时要用<code>StartCoroutine(&quot;MoveAnimation&quot;)</code>，终止的时候用<code>StopCoroutine(&quot;MoveAnimation&quot;)</code>，才能正确终止协程。</p>
 <p>要想传参，可以使用 <code>StartCoroutine(&quot;MoveAnimation&quot;, object)</code>来传参。</p>
 <h3 id="不用字符串来启动和终止协程的方法："><a href="#不用字符串来启动和终止协程的方法：" class="headerlink" title="不用字符串来启动和终止协程的方法："></a>不用字符串来启动和终止协程的方法：</h3><p>定义一个<code>Coroutine</code>类型的变量<code>coroutine</code>，在<code>StartCoroutine(MoveAnimation())</code>后接收返回的值：</p>
@@ -297,7 +297,7 @@
 
   <div class="container">
       	<div class="row">
-	      <p id="copyRightEn">Copyright &copy; 2018 - 2018 Jaxes的博客 All Rights Reserved.</p>
+	      <p id="copyRightEn">Copyright &copy; 2018 - 2019 Jaxes的博客 All Rights Reserved.</p>
 	      
 	      
     		<p class="busuanzi_uv">
@@ -451,7 +451,7 @@
             Jaxes的博客
           </div>
           <div class="panel-body">
-            Copyright © 2018 Jaxes All Rights Reserved.
+            Copyright © 2019 Jaxes All Rights Reserved.
           </div>
         </div>
       </div>
