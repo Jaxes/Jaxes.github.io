@@ -3,36 +3,26 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>unity3d学习笔记之ugui：canvas | Jaxes的博客</title>
+  <title>lua学习笔记（六） | Jaxes的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    <meta name="keywords" content="Unity, 游戏开发">
+    <meta name="keywords" content="Lua">
   
   
   
   
-  <meta name="description" content="Canvas组件： Rander Mode（渲染模式）：        （默认）Screen Space - Overlay（屏幕空间叠加模式）：自动填充场景，使Canvas自动适应Game窗口的大小，并且在此模式下Rect Transform组件不可编辑，其中的所有值将由Canvas自动设置  Pixel Perfect：开启时，UI元素将在渲染时调整到最近的像素，使外观更加锐利  Sort O">
-<meta name="keywords" content="Unity, 游戏开发">
+  <meta name="description" content="Lua面向对象封装123456789101112131415161718192021222324252627282930-- 元类People=&amp;#123;isHumen=true&amp;#125;		-- 此处定义的元素都是相当于C++的静态成员变量-- 基类方法newfunction People:new(o,n,a)	o=o or &amp;#123;&amp;#125;	setmetatable(o,self)">
+<meta name="keywords" content="Lua">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity3D学习笔记之UGUI：Canvas">
-<meta property="og:url" content="http://yoursite.com/2018/11/27/Unity3D学习笔记之UGUI：Canvas/index.html">
+<meta property="og:title" content="Lua学习笔记（六）">
+<meta property="og:url" content="http://yoursite.com/2019/07/19/Lua学习笔记（六）/index.html">
 <meta property="og:site_name" content="Jaxes的博客">
-<meta property="og:description" content="Canvas组件： Rander Mode（渲染模式）：        （默认）Screen Space - Overlay（屏幕空间叠加模式）：自动填充场景，使Canvas自动适应Game窗口的大小，并且在此模式下Rect Transform组件不可编辑，其中的所有值将由Canvas自动设置  Pixel Perfect：开启时，UI元素将在渲染时调整到最近的像素，使外观更加锐利  Sort O">
+<meta property="og:description" content="Lua面向对象封装123456789101112131415161718192021222324252627282930-- 元类People=&amp;#123;isHumen=true&amp;#125;		-- 此处定义的元素都是相当于C++的静态成员变量-- 基类方法newfunction People:new(o,n,a)	o=o or &amp;#123;&amp;#125;	setmetatable(o,self)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板1.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板2.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/27/Unity3D学习笔记之UGUI：Canvas/演示1.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/27/Unity3D学习笔记之UGUI：Canvas/演示2.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板3.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/27/Unity3D学习笔记之UGUI：Canvas/演示3.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板4.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板5.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板6.png">
-<meta property="og:updated_time" content="2018-12-08T15:29:25.748Z">
+<meta property="og:updated_time" content="2019-07-20T03:31:48.399Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unity3D学习笔记之UGUI：Canvas">
-<meta name="twitter:description" content="Canvas组件： Rander Mode（渲染模式）：        （默认）Screen Space - Overlay（屏幕空间叠加模式）：自动填充场景，使Canvas自动适应Game窗口的大小，并且在此模式下Rect Transform组件不可编辑，其中的所有值将由Canvas自动设置  Pixel Perfect：开启时，UI元素将在渲染时调整到最近的像素，使外观更加锐利  Sort O">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板1.png">
+<meta name="twitter:title" content="Lua学习笔记（六）">
+<meta name="twitter:description" content="Lua面向对象封装123456789101112131415161718192021222324252627282930-- 元类People=&amp;#123;isHumen=true&amp;#125;		-- 此处定义的元素都是相当于C++的静态成员变量-- 基类方法newfunction People:new(o,n,a)	o=o or &amp;#123;&amp;#125;	setmetatable(o,self)">
   
     <link rel="alternate" href="/atom.xml" title="Jaxes的博客" type="application/atom+xml">
   
@@ -169,7 +159,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Unity3D学习笔记之UGUI：Canvas" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Lua学习笔记（六）" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -177,7 +167,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      Unity3D学习笔记之UGUI：Canvas
+      Lua学习笔记（六）
     </h1>
   
 
@@ -185,12 +175,12 @@
     
     <div class="article-meta">
       
-	<a href="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/" class="article-date">
-	  <time datetime="2018-11-27T09:35:30.000Z" itemprop="datePublished">2018-11-27</time>
+	<a href="/2019/07/19/Lua学习笔记（六）/" class="article-date">
+	  <time datetime="2019-07-19T09:58:00.000Z" itemprop="datePublished">2019-07-19</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/Unity/">Unity</a>
+    <a class="article-category-link" href="/categories/Lua/">Lua</a>
 
       
 	<a class="article-views">
@@ -202,98 +192,9 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Canvas组件："><a href="#Canvas组件：" class="headerlink" title="Canvas组件："></a>Canvas组件：</h2><ol>
-<li>Rander Mode（渲染模式）：</li>
-</ol>
-<hr>
-<p>   <img src="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板1.png" alt=""></p>
-<ol>
-<li><p>（默认）Screen Space - Overlay（屏幕空间叠加模式）：自动填充场景，使Canvas自动适应Game窗口的大小，并且在此模式下Rect Transform组件不可编辑，其中的所有值将由Canvas自动设置</p>
-<ol>
-<li><p>Pixel Perfect：开启时，UI元素将在渲染时调整到最近的像素，使外观更加锐利</p>
-</li>
-<li><p>Sort Order：表示该Canvas渲染的顺序，数字越大越迟进渲染管线，位置处于越上层</p>
-</li>
-<li><p>Target Display：表示渲染到的目标显示窗</p>
-<hr>
-<p><img src="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板2.png" alt=""></p>
-<p><img src="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/演示1.png" alt=""></p>
-<p><img src="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/演示2.png" alt=""></p>
-</li>
-</ol>
-</li>
-<li><p>Screen Space - Camera（屏幕空间相机模式）：和1类似，但是Canvas是直接填充到相机的截锥体中，并且可以设置独立的相机，允许UI元素有深度感</p>
-<ol>
-<li><p>Pixel Perfect：同上</p>
-</li>
-<li><p>Render Camera：渲染此Canvas的相机</p>
-</li>
-<li><p>Plane Distance：Canvas离相机的距离</p>
-</li>
-<li><p>Sorting Layer：渲染顺序层级</p>
-</li>
-<li><p>Order in Layer：在当前渲染顺序层级的子渲染顺序</p>
-<hr>
-<p><img src="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板3.png" alt=""></p>
-</li>
-</ol>
-<p><img src="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/演示3.png" alt=""></p>
-</li>
-<li><p>World Space（世界空间模式）：此模式下的UI元素可以是场景中的静态元素或者是可移动元素，并且Rect Transform组件允许设置，不再随屏幕的变化而变化</p>
-<ol>
-<li>Event Camera：检测点击UI等事件的相机</li>
-<li>Sorting Layer：同上</li>
-<li>Order in Layer：同上</li>
-</ol>
-</li>
-</ol>
-<h2 id="Canvas-Scaler组件："><a href="#Canvas-Scaler组件：" class="headerlink" title="Canvas Scaler组件："></a>Canvas Scaler组件：</h2><ol>
-<li><p>UI Scale Mode（缩放模式）：</p>
-<hr>
-<p><img src="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板4.png" alt=""></p>
-<ol>
-<li><p>Constant Pixel Size：固定像素尺寸，无论分辨率是多少，占用的像素都是一样的</p>
-<ol>
-<li>Scale Factor：缩放比例，默认为1</li>
-</ol>
-<hr>
-<p><img src="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板5.png" alt=""></p>
-</li>
-<li><p>Scale With Screen Size：根据屏幕大小进行缩放</p>
-<ol>
-<li>Reference Resolution：开发时设置的分辨率，所有的缩放基于这个分辨率</li>
-<li>Screen Match Mode：屏幕适配模式<ol>
-<li>Match Width Or Height（默认）：匹配宽度或高度<ol>
-<li>Match：宽度和高度的缩放权重，横屏游戏用Height匹配，竖屏游戏用Width匹配</li>
-</ol>
-</li>
-<li>Expend：如果屏幕实际大小大于参考标准时，选用此模式，它会适当放大Canvas</li>
-<li>Shrink：如果屏幕实际大小小于参考标准时，选用此模式，它会适当缩小Canvas</li>
-</ol>
-</li>
-</ol>
-<hr>
-<p><img src="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/面板6.png" alt=""></p>
-</li>
-<li><p>Constant Physical Size：物理大小不变模式</p>
-<ol>
-<li>Physical Unit：物理单位<ol>
-<li>Centimeters（厘米）：0.01米</li>
-<li>Millimeters（毫米）：0.1厘米</li>
-<li>Inches（英寸）：英制单位</li>
-<li>Points（积分）：1/72英寸</li>
-<li>Picas（派卡）：1/6英寸</li>
-</ol>
-</li>
-<li>Fallback Screen DPI：屏幕DPI</li>
-<li>Default Sprite DPI：默认精灵DPI</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>Reference Pixels Per Unit（参考像素每单位）：每个单位的参考像素，和1x1x1的Cube来比较，棱长1表示一个单位，一个单位由n个像素组成，n即为此项的值，默认为100</p>
-</li>
-</ol>
+        <h2 id="Lua面向对象"><a href="#Lua面向对象" class="headerlink" title="Lua面向对象"></a>Lua面向对象</h2><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 元类</span></span><br><span class="line">People=&#123;isHumen=<span class="literal">true</span>&#125;		<span class="comment">-- 此处定义的元素都是相当于C++的静态成员变量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 基类方法new</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People:new</span><span class="params">(o,n,a)</span></span></span><br><span class="line">	o=o <span class="keyword">or</span> &#123;&#125;</span><br><span class="line">	<span class="built_in">setmetatable</span>(o,self)	<span class="comment">-- self相当于C++的this指针，但是这里指代的是元类People而不是对象o</span></span><br><span class="line">	self.<span class="built_in">__index</span>=self</span><br><span class="line">	o.name=n				<span class="comment">-- 用self代替o相当于C++中给静态成员变量赋值</span></span><br><span class="line">	o.age=a</span><br><span class="line">	<span class="keyword">return</span> o</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 基类元方法__tostring</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People:__tostring</span><span class="params">()</span></span></span><br><span class="line">	<span class="keyword">local</span> sum=<span class="string">"名字为："</span>..self.name..<span class="string">"\n年龄为："</span>..self.age <span class="comment">-- 此处self指代的是实际调用时的对象</span></span><br><span class="line">	<span class="keyword">return</span> sum</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 基类方法walk</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People:walk</span><span class="params">()</span></span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"我正在走！"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建对象</span></span><br><span class="line">me=People:new(<span class="literal">nil</span>,<span class="string">"Jaxes"</span>,<span class="number">21</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用对象中的函数</span></span><br><span class="line"><span class="built_in">print</span>(me)		<span class="comment">-- 等价于print(tostring(me))</span></span><br><span class="line">me:walk()		<span class="comment">-- 等价于me.walk(me)</span></span><br></pre></td></tr></table></figure>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 类Worker派生自People类</span></span><br><span class="line">Worker=People:new()</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 派生类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Worker:new</span><span class="params">(o,n,a,id)</span></span></span><br><span class="line">	o=o <span class="keyword">or</span> People:new(o,n,a)</span><br><span class="line">	<span class="built_in">setmetatable</span>(o,self)</span><br><span class="line">	self.<span class="built_in">__index</span>=self</span><br><span class="line">	o.id=id</span><br><span class="line">	<span class="keyword">return</span> o</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Worker:__tostring</span><span class="params">()</span></span></span><br><span class="line">	<span class="keyword">local</span> sum=People.<span class="built_in">__tostring</span>(self)</span><br><span class="line">	sum=sum..<span class="string">"\nID为："</span>..self.id</span><br><span class="line">	<span class="keyword">return</span> sum</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">worker=Worker:new(<span class="literal">nil</span>,<span class="string">"kaka"</span>,<span class="number">55</span>,<span class="number">01</span>)</span><br><span class="line"><span class="built_in">print</span>(worker)</span><br><span class="line">worker:walk()		<span class="comment">-- 继承自父类函数walk</span></span><br></pre></td></tr></table></figure>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>这个部分暂时还不清楚怎么搞，暂时做为后续储备内容</p>
 
       
     </div>
@@ -307,7 +208,7 @@
           </li>
           <li class="post-copyright-link">
           <strong>本文链接:  </strong>
-          <a href="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/" target="_blank" title="Unity3D学习笔记之UGUI：Canvas">http://yoursite.com/2018/11/27/Unity3D学习笔记之UGUI：Canvas/</a>
+          <a href="/2019/07/19/Lua学习笔记（六）/" target="_blank" title="Lua学习笔记（六）">http://yoursite.com/2019/07/19/Lua学习笔记（六）/</a>
           </li>
           <li class="post-copyright-license">
             <strong>版权声明:   </strong>
@@ -353,19 +254,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/07/15/Lua学习笔记（一）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          Lua学习笔记（一）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/21/Unity3D学习笔记之碰撞器和触发器/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/07/18/Lua学习笔记（五）/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">Unity3D学习笔记之碰撞器和触发器</div>
+      <div class="article-nav-title">Lua学习笔记（五）</div>
     </a>
   
 </nav>
@@ -379,7 +271,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Canvas组件："><span class="nav-number">1.</span> <span class="nav-text">Canvas组件：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Canvas-Scaler组件："><span class="nav-number">2.</span> <span class="nav-text">Canvas Scaler组件：</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lua面向对象"><span class="nav-number">1.</span> <span class="nav-text">Lua面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#封装"><span class="nav-number">1.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">1.2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态"><span class="nav-number">1.3.</span> <span class="nav-text">多态</span></a></li></ol></li></ol>
     
     </div>
   </aside>

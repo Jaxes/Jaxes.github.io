@@ -12,7 +12,7 @@
   <meta name="description" content="技术博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jaxes的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Jaxes的博客">
 <meta property="og:description" content="技术博客">
 <meta property="og:locale" content="zh-CN">
@@ -237,7 +237,7 @@
         
           <section id="main" style="float:none;">
   
-    <article id="post-Lua学习笔记（六）" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Unity终止协程的问题" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -245,7 +245,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/19/Lua学习笔记（六）/">Lua学习笔记（六）</a>
+      <a class="article-title" href="/2018/10/23/Unity终止协程的问题/">Unity终止协程的问题</a>
     </h1>
   
 
@@ -253,321 +253,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/07/19/Lua学习笔记（六）/" class="article-date">
-	  <time datetime="2019-07-19T09:58:00.000Z" itemprop="datePublished">2019-07-19</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Lua/">Lua</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          Lua面向对象封装123456789101112131415161718192021222324252627282930-- 元类People=&#123;isHumen=true&#125;		-- 此处定义的元素都是相当于C++的静态成员变量-- 基类方法newfunction People:new(o,n,a)	o=o or &#123;&#125;	setmetatable(o,self)	-- self相当于C++的this指针，但是这里指代的是元类People而不是对象o	se...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/07/19/Lua学习笔记（六）/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-Lua学习笔记（五）" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/18/Lua学习笔记（五）/">Lua学习笔记（五）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/07/18/Lua学习笔记（五）/" class="article-date">
-	  <time datetime="2019-07-18T15:12:00.000Z" itemprop="datePublished">2019-07-18</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Lua/">Lua</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          Lua模块与包模块类似于一个封装库
-创建方法：
-
-创建一个table
-把需要导出的常量、函数放入其中
-返回该table
-
-123456789101112131415161718192021-- 文件名为mymodule.lua-- 定义一个名为mymodule的模块mymodule=&#123;&#125;-- 定义一个常量mymodule.constant="这是一个常量"-- 定义一个函数function mymodule.func1()    io.write("这是一个公有函数！\...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/07/18/Lua学习笔记（五）/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-Lua学习笔记（四）" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/17/Lua学习笔记（四）/">Lua学习笔记（四）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/07/17/Lua学习笔记（四）/" class="article-date">
-	  <time datetime="2019-07-17T14:07:00.000Z" itemprop="datePublished">2019-07-17</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Lua/">Lua</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          Lua数组一维数组123456789101112131415161718192021array=&#123;"Lua","Java","C++"&#125;for i=0,2 do    print(array[i])end--[[输出结果：nilLuaJava结果分析：Lua索引值以1为起始，也可以指定0开始]]-- 以负数为数组索引值array=&#123;&#125;for i=-2,2 do    array[i]=i*2endfor i=-2,2 do    print(arra...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/07/17/Lua学习笔记（四）/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-Lua学习笔记（三）" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/16/Lua学习笔记（三）/">Lua学习笔记（三）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/07/16/Lua学习笔记（三）/" class="article-date">
-	  <time datetime="2019-07-16T13:57:00.000Z" itemprop="datePublished">2019-07-16</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Lua/">Lua</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          Lua函数函数定义123456-- []为可选部分[local] function function_name(argument1,argument2)    -- do something    [return result]		-- 可以返回多个值，每个值以逗号隔开end-- 函数名表示该函数的引用，与C/C++的函数指针类似
-可变参数1234567891011121314151617181920212223242526272829303132333435363738394041424...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/07/16/Lua学习笔记（三）/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-Lua学习笔记（二）" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/15/Lua学习笔记（二）/">Lua学习笔记（二）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/07/15/Lua学习笔记（二）/" class="article-date">
-	  <time datetime="2019-07-15T11:12:00.000Z" itemprop="datePublished">2019-07-15</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Lua/">Lua</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          Lua变量12345678910111213141516171819202122232425--[[Lua变量三种类型：全局变量（储存在名称为_G的table中）、局部变量、table中的域Lua中的变量全都是全局变量，即使在语句块或函数里，除非用local显式声明为局部变量局部变量作用域与C/C++概念相同变量默认值为nil]]-- test.lua文件脚本a=1			-- 全局变量local b=2	-- 文件内局部变量 function rua()    c=5			-- 全局变量 ...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/07/15/Lua学习笔记（二）/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-Lua学习笔记（一）" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/15/Lua学习笔记（一）/">Lua学习笔记（一）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/07/15/Lua学习笔记（一）/" class="article-date">
-	  <time datetime="2019-07-15T01:27:00.000Z" itemprop="datePublished">2019-07-15</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Lua/">Lua</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          注释12345678-- 单行注释--[[多行注释]]-- 等号数量只要两边一致即可--[=[多行注释]=]
-标识符A-Z、a-z、下划线_开头后加上0个或多个字母、下划线、数字（0-9）
-注意：最好不要使用下划线加大写字母，Lua保留字也是如此
-不允许特殊字符@、$、%定义标识符
-区分大小写
-关键词1234-- Lua的保留关键字and break do else elseif end false for function if in local nil not or repeat re...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/07/15/Lua学习笔记（一）/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-Unity3D学习笔记之UGUI：Canvas" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/">Unity3D学习笔记之UGUI：Canvas</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/" class="article-date">
-	  <time datetime="2018-11-27T09:35:30.000Z" itemprop="datePublished">2018-11-27</time>
+	<a href="/2018/10/23/Unity终止协程的问题/" class="article-date">
+	  <time datetime="2018-10-23T15:17:30.000Z" itemprop="datePublished">2018-10-23</time>
 	</a>
 
       
@@ -578,22 +265,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p class="article-excerpt-content">
-          Canvas组件：
-Rander Mode（渲染模式）：
-
-
-   
-
-（默认）Screen Space - Overlay（屏幕空间叠加模式）：自动填充场景，使Canvas自动适应Game窗口的大小，并且在此模式下Rect Transform组件不可编辑，其中的所有值将由Canvas自动设置
-
-Pixel Perfect：开启时，UI元素将在渲染时调整到最近的像素，使外观更加锐利
-
-Sort Order：表示该Canvas渲染的顺序，数字越大越迟进渲染管线，位置处于越上层
-
-Target...
+          最近在项目开发的时候发现，调用StopCoroutine()来终止一个正在运行的协程的时候，无法终止协程。然后通过查资料发现了一下两种办法：
+利用字符串来启动和终止协程：比如，我有一个协程IEnumerator MoveAnimation()，启动时要用StartCoroutine(&quot;MoveAnimation&quot;)，终止的时候用StopCoroutine(&quot;MoveAnimation&quot;)，才能正确终止协程。
+要想传参，可以使用 StartCorout...
         </p>
         <p class="article-more-link">
-          <a href="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/#more">阅读全文</a>
+          <a href="/2018/10/23/Unity终止协程的问题/#more">阅读全文</a>
         </p>
       
     </div>
@@ -612,7 +289,7 @@ Target...
 
 
   
-    <article id="post-Unity3D学习笔记之碰撞器和触发器" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Unity界面UGUI遮挡的问题" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -620,7 +297,7 @@ Target...
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/11/21/Unity3D学习笔记之碰撞器和触发器/">Unity3D学习笔记之碰撞器和触发器</a>
+      <a class="article-title" href="/2018/10/22/Unity界面UGUI遮挡的问题/">Unity界面UGUI遮挡的问题</a>
     </h1>
   
 
@@ -628,8 +305,8 @@ Target...
     
     <div class="article-meta">
       
-	<a href="/2018/11/21/Unity3D学习笔记之碰撞器和触发器/" class="article-date">
-	  <time datetime="2018-11-21T14:15:22.000Z" itemprop="datePublished">2018-11-21</time>
+	<a href="/2018/10/22/Unity界面UGUI遮挡的问题/" class="article-date">
+	  <time datetime="2018-10-22T12:22:45.000Z" itemprop="datePublished">2018-10-22</time>
 	</a>
 
       
@@ -640,22 +317,15 @@ Target...
     <div class="article-entry" itemprop="articleBody">
       
         <p class="article-excerpt-content">
-          碰撞器种类：
-Box Collider（盒碰撞器）——立方体
-Sphere Collider（球碰撞器）——球体
-Capsule Collider（胶囊碰撞器）——胶囊体
-Mesh Collider（网格碰撞器）——从物体的网格创建一个碰撞器，不能与其他网格碰撞器相碰撞
-Wheel Collider（轮碰撞器）——特殊的碰撞器，用于创建车或其他的交通工具的车轮
+          解决方法：在使用Unity的UGUI时候，重叠的UI控件可能会导致某一个控件点击失败，如下图：
 
-碰撞器属性：
-Material：材质
-Is Trigger：开启触发器
-Radius：半径
-Center：中心
-Size：碰撞器...
+在前面的图片挡住了后面的Button，导致后面的Button无法触发点击事件，此时只要把图片的Image组件的Raycast Target的勾选取消即可解决遮挡的问题：
+
+原理：鼠标点击屏幕实际上是以点击的点为原点，发射一条垂直屏幕向里的射线，然后通过射线与第一个物体的相交来判断是否点击到该物体。取消了Raycast Target选项表明不作为射线相交的对象，则不会挡住后面的Button
+
         </p>
         <p class="article-more-link">
-          <a href="/2018/11/21/Unity3D学习笔记之碰撞器和触发器/#more">阅读全文</a>
+          <a href="/2018/10/22/Unity界面UGUI遮挡的问题/#more">阅读全文</a>
         </p>
       
     </div>
@@ -674,7 +344,7 @@ Size：碰撞器...
 
 
   
-    <article id="post-Unity3D学习笔记之Rigidbody-刚体组件" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-steam商店页面的探索队列无法打开" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -682,7 +352,7 @@ Size：碰撞器...
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/28/Unity3D学习笔记之Rigidbody-刚体组件/">Unity3D学习笔记之Rigidbody(刚体组件)</a>
+      <a class="article-title" href="/2018/10/21/steam商店页面的探索队列无法打开/">steam商店页面的探索队列无法打开</a>
     </h1>
   
 
@@ -690,87 +360,28 @@ Size：碰撞器...
     
     <div class="article-meta">
       
-	<a href="/2018/10/28/Unity3D学习笔记之Rigidbody-刚体组件/" class="article-date">
-	  <time datetime="2018-10-28T06:38:54.000Z" itemprop="datePublished">2018-10-28</time>
+	<a href="/2018/10/21/steam商店页面的探索队列无法打开/" class="article-date">
+	  <time datetime="2018-10-21T15:43:04.000Z" itemprop="datePublished">2018-10-21</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/Unity/">Unity</a>
+    <a class="article-category-link" href="/categories/杂项/">杂项</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
         <p class="article-excerpt-content">
-          Rigidbody面板各属性：
-Mass（质量）：单位kg
+          steam的探索队列可能会显示“你所在的地区不提供此物品”，此时如何解决呢？
+用浏览器打开steam商店页面：
+然后按F12打开浏览器控制台（Console）：
+然后在右边输入以下代码：$J.post(&quot;/app/7&quot;, { sessionid: g_sessionID, appid_to_clear_from_queue: APPID });
+注意：其中的APPID由你当前队列的网址的以下数字串决定，把你对应的数字串替换上面代码的APPID即可
 
-Drag（阻力）
 
-Angular Drag（角阻力）
-
-Use Gravity（开启重力）
-
-Is Kinematic（开启动力学模式）：开启之后将不在受物理引擎的影响而只能通过Transform属性来操作，这个选项适用于模拟平台的移动或带有铰链关节连接刚体的动画。
-
-Interpolate（插值）：
-​    None：没有插值。
-​    Interpolate：内插值，基于前一帧的Transform来平滑的此次的Tran...
         </p>
         <p class="article-more-link">
-          <a href="/2018/10/28/Unity3D学习笔记之Rigidbody-刚体组件/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-C++的ifstream中使用eof最后一个字符输出两次，其实不是eof的锅！" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/25/C++的ifstream中使用eof最后一个字符输出两次，其实不是eof的锅！/">C++的ifstream中使用eof最后一个字符输出两次，其实不是eof的锅！</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/10/25/C++的ifstream中使用eof最后一个字符输出两次，其实不是eof的锅！/" class="article-date">
-	  <time datetime="2018-10-24T17:09:44.000Z" itemprop="datePublished">2018-10-25</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/C/">C++</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          写C++文件输入输出流时遇到的小问题
-当我执行以下代码时，最后的值会打印两次：
-123456789101112131415161718192021222324#include &lt;iostream&gt;#include &lt;stdlib.h&gt;#include &lt;fstream&gt;using namespace std;int main(void)&#123;        int a = 0,b = 1,c = 2,d = 3;        char ch;  ...
-        </p>
-        <p class="article-more-link">
-          <a href="/2018/10/25/C++的ifstream中使用eof最后一个字符输出两次，其实不是eof的锅！/#more">阅读全文</a>
+          <a href="/2018/10/21/steam商店页面的探索队列无法打开/#more">阅读全文</a>
         </p>
       
     </div>
@@ -793,7 +404,7 @@ Interpolate（插值）：
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 </section>

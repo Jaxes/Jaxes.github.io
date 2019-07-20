@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>lua学习笔记（三） | Jaxes的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Lua">
+  
+  
+  
+  
+  <meta name="description" content="Lua函数函数定义123456-- []为可选部分[local] function function_name(argument1,argument2)    -- do something    [return result]		-- 可以返回多个值，每个值以逗号隔开end-- 函数名表示该函数的引用，与C/C++的函数指针类似 可变参数12345678910111213141516171819">
+<meta name="keywords" content="Lua">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lua学习笔记（三）">
+<meta property="og:url" content="http://yoursite.com/2019/07/16/Lua学习笔记（三）/index.html">
+<meta property="og:site_name" content="Jaxes的博客">
+<meta property="og:description" content="Lua函数函数定义123456-- []为可选部分[local] function function_name(argument1,argument2)    -- do something    [return result]		-- 可以返回多个值，每个值以逗号隔开end-- 函数名表示该函数的引用，与C/C++的函数指针类似 可变参数12345678910111213141516171819">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-20T03:31:25.778Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lua学习笔记（三）">
+<meta name="twitter:description" content="Lua函数函数定义123456-- []为可选部分[local] function function_name(argument1,argument2)    -- do something    [return result]		-- 可以返回多个值，每个值以逗号隔开end-- 函数名表示该函数的引用，与C/C++的函数指针类似 可变参数12345678910111213141516171819">
+  
+    <link rel="alternate" href="/atom.xml" title="Jaxes的博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/myhead.jpg">
+  <link rel="apple-touch-icon" href="/css/images/myhead.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/myhead.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">文章</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Lua学习笔记（三）" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      Lua学习笔记（三）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/16/Lua学习笔记（三）/" class="article-date">
+	  <time datetime="2019-07-16T13:57:00.000Z" itemprop="datePublished">2019-07-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Lua/">Lua</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Lua函数"><a href="#Lua函数" class="headerlink" title="Lua函数"></a>Lua函数</h2><h3 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- []为可选部分</span></span><br><span class="line">[<span class="keyword">local</span>] <span class="function"><span class="keyword">function</span> <span class="title">function_name</span><span class="params">(argument1,argument2)</span></span></span><br><span class="line">    <span class="comment">-- do something</span></span><br><span class="line">    [<span class="keyword">return</span> result]		<span class="comment">-- 可以返回多个值，每个值以逗号隔开</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">-- 函数名表示该函数的引用，与C/C++的函数指针类似</span></span><br></pre></td></tr></table></figure>
+<h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 与C语言类似，在函数参数列表中使用三点...表示函数有可变的参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(...)</span></span></span><br><span class="line">    <span class="keyword">local</span> s=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i,v <span class="keyword">in</span> <span class="built_in">ipairs</span>&#123;...&#125; <span class="keyword">do</span>	<span class="comment">-- 注意这里是&#123;&#125;，&#123;...&#125;表示一个由所有变长参数构成的table（这里实质是一个数组）</span></span><br><span class="line">        s=s+v</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">print</span>(add(<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>))		<span class="comment">-- 输出：25</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 可变参数也可以赋值给一个变量</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">average</span><span class="params">(...)</span></span></span><br><span class="line">    result=<span class="number">0</span></span><br><span class="line">    <span class="keyword">local</span> <span class="built_in">arg</span>=&#123;...&#125;							<span class="comment">-- arg为一个table，局部变量</span></span><br><span class="line">    <span class="keyword">for</span> i,v <span class="keyword">in</span> <span class="built_in">ipairs</span>(<span class="built_in">arg</span>) <span class="keyword">do</span></span><br><span class="line">        result=result+v</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"总共传入 "</span> .. #<span class="built_in">arg</span> .. <span class="string">" 个数"</span>)		<span class="comment">-- #也可以用于计算table中的元素个数</span></span><br><span class="line">    <span class="keyword">return</span> result/#<span class="built_in">arg</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"平均值为"</span>,average(<span class="number">10</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 也可以通过select("#",...)来获取可变参数的数量</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">average</span><span class="params">(...)</span></span></span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">local</span> <span class="built_in">arg</span>=&#123;...&#125;</span><br><span class="line">    <span class="keyword">for</span> i,v <span class="keyword">in</span> <span class="built_in">ipairs</span>(<span class="built_in">arg</span>) <span class="keyword">do</span></span><br><span class="line">        result = result + v</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"总共传入 "</span> .. <span class="built_in">select</span>(<span class="string">"#"</span>,...) .. <span class="string">" 个数"</span>)	<span class="comment">-- 等价于#arg</span></span><br><span class="line">    <span class="keyword">return</span> result/<span class="built_in">select</span>(<span class="string">"#"</span>,...)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"平均值为"</span>,average(<span class="number">10</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 也可能同时需要固定参数和可变参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fwrite</span><span class="params">(fmt,...)</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">io</span>.<span class="built_in">write</span>(<span class="built_in">string</span>.<span class="built_in">format</span>(fmt,...))</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">fwrite(<span class="string">"rua\n"</span>)			<span class="comment">-- fmt="rua"，没有可变参数</span></span><br><span class="line">fwrite(<span class="string">"%d%d\n"</span>,<span class="number">1</span>,<span class="number">2</span>)	<span class="comment">-- fmt="%d%d"，可变参数为1和2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- select函数</span></span><br><span class="line"><span class="keyword">do</span>  </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">(...)</span></span>  </span><br><span class="line">        <span class="keyword">for</span> i = <span class="number">1</span>, <span class="built_in">select</span>(<span class="string">'#'</span>, ...) <span class="keyword">do</span>  <span class="comment">-- 获取参数总数</span></span><br><span class="line">            <span class="keyword">local</span> <span class="built_in">arg</span> = <span class="built_in">select</span>(i, ...); <span class="comment">-- 读取第i个可变实参</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"arg"</span>, <span class="built_in">arg</span>);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    foo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);  </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="Lua运算符"><a href="#Lua运算符" class="headerlink" title="Lua运算符"></a>Lua运算符</h2><p>Lua运算符类型</p>
+<ul>
+<li>算术运算符</li>
+<li>关系运算符</li>
+<li>逻辑运算符</li>
+<li>其他运算符</li>
+</ul>
+<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>除了<code>^</code>用于计算幂，其他加、减、乘、除、取余、取反等都与C/C++相同</p>
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><p>除了不等于号<code>~=</code>，其他等于、大于、小于、大于等于、小于等于等都与C/C++相同</p>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 只有当值为nil或false才是假，其他都为真（0也为真）</span></span><br><span class="line"><span class="keyword">and</span>	<span class="comment">-- 类似于C/C++的&amp;&amp;，当为假时返回从左到右表达式第一个为假的值（nil或false），否则返回后者</span></span><br><span class="line"><span class="keyword">or</span>	<span class="comment">-- 类似于C/C++的||，当为真时返回从左到右表达式第一个为真的值（非nil和非false），否则返回后者</span></span><br><span class="line"><span class="keyword">not</span> <span class="comment">-- 类似于C/C++的！</span></span><br></pre></td></tr></table></figure>
+<h3 id="其他运算符"><a href="#其他运算符" class="headerlink" title="其他运算符"></a>其他运算符</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">..		<span class="comment">-- 用于连接两个字符串或非字符串，最终返回一个字符串，注意连接一个number时需要在number与..之间加一个空格</span></span><br><span class="line">#		<span class="comment">-- 一元运算符，返回string或table的长度</span></span><br></pre></td></tr></table></figure>
+<h3 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">优先级</th>
+<th style="text-align:center">运算符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">^</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">not、-（负号）</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">*、/</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">+、-（减号）</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">..</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">&lt;、&gt;、&lt;=、&gt;=、~=、==</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">and</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">or</td>
+</tr>
+</tbody>
+</table>
+<p>除了<code>^</code>和<code>..</code>以外，其他所有的<strong><em>二元运算符</em></strong>都是<strong><em>从左向右</em></strong>结合</p>
+<h2 id="Lua字符串"><a href="#Lua字符串" class="headerlink" title="Lua字符串"></a>Lua字符串</h2><h3 id="字符串表示方法"><a href="#字符串表示方法" class="headerlink" title="字符串表示方法"></a>字符串表示方法</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'a string'</span>		<span class="comment">-- 单引号</span></span><br><span class="line"><span class="string">"a string"</span>		<span class="comment">-- 双引号</span></span><br><span class="line"><span class="string">[[a string]]</span>	<span class="comment">-- 双中括号</span></span><br></pre></td></tr></table></figure>
+<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><p>与C/C++相同</p>
+<h3 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">作用：字符串全部转为大写字母</span></span><br><span class="line"><span class="comment">参数列表：</span></span><br><span class="line"><span class="comment">	argument：原字符串</span></span><br><span class="line"><span class="comment">返回值：转换为大写后的字符串</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">upper</span>(argument)</span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">作用：字符串全部转为小写字母</span></span><br><span class="line"><span class="comment">参数列表：</span></span><br><span class="line"><span class="comment">	argument：原字符串</span></span><br><span class="line"><span class="comment">返回值：转换为小写后的字符串</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">lower</span>(argument)</span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">作用：在字符串中替换，相当于其他语言的string.replace</span></span><br><span class="line"><span class="comment">参数列表：</span></span><br><span class="line"><span class="comment">	mainString：要替换的字符串</span></span><br><span class="line"><span class="comment">	findString：被替换的字符串</span></span><br><span class="line"><span class="comment">	replaceString：要替换成的字符串</span></span><br><span class="line"><span class="comment">	num：替换次数（忽略表示全部替换）</span></span><br><span class="line"><span class="comment">返回值：替换后的字符串和实际替换次数</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">gsub</span>(mainString,findString,replaceString,num)</span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">作用：查找子串</span></span><br><span class="line"><span class="comment">参数列表：</span></span><br><span class="line"><span class="comment">	str：目标字符串</span></span><br><span class="line"><span class="comment">	substr：子串</span></span><br><span class="line"><span class="comment">	init：查找的起始索引</span></span><br><span class="line"><span class="comment">	end：查找的末尾索引</span></span><br><span class="line"><span class="comment">返回值：子串始末字符位置索引，不存在返回nil</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">find</span>(str,substr,[init,[<span class="keyword">end</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">作用：字符串反转</span></span><br><span class="line"><span class="comment">参数列表：</span></span><br><span class="line"><span class="comment">	arg：原字符串</span></span><br><span class="line"><span class="comment">返回值：反转后的字符串</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">reverse</span>(<span class="built_in">arg</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">作用：返回一个类似C语言的printf的格式化字符串</span></span><br><span class="line"><span class="comment">参数列表：</span></span><br><span class="line"><span class="comment">	...：可变参数列表</span></span><br><span class="line"><span class="comment">返回值：格式化字符串</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">format</span>(...)</span><br><span class="line"><span class="comment">-- 示例</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">format</span>(<span class="string">"the value is:%d"</span>,<span class="number">4</span>)	<span class="comment">-- 返回：the value is:4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">作用：将整型数字转成字符并连接</span></span><br><span class="line"><span class="comment">参数列表：</span></span><br><span class="line"><span class="comment">	arg：ASCCI码组成的参数列表</span></span><br><span class="line"><span class="comment">返回值：一个由ASCCI码对应的字符连接成的字符串</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">char</span>(<span class="built_in">arg</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">作用：转换字符为整数值</span></span><br><span class="line"><span class="comment">参数列表：</span></span><br><span class="line"><span class="comment">	arg：字符串</span></span><br><span class="line"><span class="comment">	int：指定字符串某索引位置的字符，默认为第一个字符</span></span><br><span class="line"><span class="comment">返回值：字符对应的ASCCI码整数值</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">byte</span>(<span class="built_in">arg</span>，[int])</span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">作用：计算字符串长度</span></span><br><span class="line"><span class="comment">参数列表：</span></span><br><span class="line"><span class="comment">	arg：字符串</span></span><br><span class="line"><span class="comment">返回值：字符串长度</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">len</span>(<span class="built_in">arg</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">作用：拷贝并连接n个字符串</span></span><br><span class="line"><span class="comment">参数列表：</span></span><br><span class="line"><span class="comment">	string：字符串</span></span><br><span class="line"><span class="comment">	n：拷贝次数</span></span><br><span class="line"><span class="comment">返回值：字符串string的n个拷贝连接成的字符串</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">rep</span>(<span class="built_in">string</span>,n)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 连接字符串</span></span><br><span class="line">..</span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">作用：查找下一个匹配的子串</span></span><br><span class="line"><span class="comment">参数列表：</span></span><br><span class="line"><span class="comment">	str：字符串</span></span><br><span class="line"><span class="comment">	pattern：正则匹配表达式</span></span><br><span class="line"><span class="comment">返回值：一个迭代器函数，每一次调用这个函数，返回一个在字符串 str 找到的下一个符合 pattern 描述的子串，如果没有找到子串，返回nil</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">gmatch</span>(str,pattern)</span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">作用：寻找原字符串str中的第一个配对</span></span><br><span class="line"><span class="comment">参数列表：</span></span><br><span class="line"><span class="comment">	str：字符串</span></span><br><span class="line"><span class="comment">	pattern：正则匹配表达式</span></span><br><span class="line"><span class="comment">	init：指定搜寻过程的起点，默认为1</span></span><br><span class="line"><span class="comment">返回值：配对表达式中的所有捕获结果，即匹配到的字符串</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">match</span>(str,pattern,init)</span><br></pre></td></tr></table></figure>
+<h3 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h3><p>除了<code>%q</code>，其余与C语言类似</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- %q接受一个字符串并将其转化为可安全被Lua编译器读入的格式，以下写法输出等价</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">format</span>(<span class="string">"%q"</span>,<span class="string">"the\nLua"</span>)</span><br><span class="line"><span class="comment">-- 输出以下字符串，与在Lua编辑器下编写换行的字符串等价</span></span><br><span class="line"><span class="string">"the\</span></span><br><span class="line"><span class="string">Lua"</span></span><br></pre></td></tr></table></figure>
+<p><strong><em>注意：</em></strong><code>%x</code>与<code>%X</code>，<code>%e</code>与<code>%E</code>是不同的输出，前者输出都为小写字母，后者输出统一为大写字母</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>.<span class="built_in">format</span>(<span class="string">"%x"</span>,<span class="number">13</span>)		<span class="comment">-- 输出d</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">format</span>(<span class="string">"%X"</span>,<span class="number">13</span>)		<span class="comment">-- 输出D</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">format</span>(<span class="string">"%e"</span>,<span class="number">1000</span>)	<span class="comment">-- 输出1.000000e+03</span></span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">format</span>(<span class="string">"%E"</span>,<span class="number">1000</span>)	<span class="comment">-- 输出1.000000E+03</span></span><br></pre></td></tr></table></figure>
+<h3 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h3><p><a href="https://www.runoob.com/lua/lua-strings.html" target="_blank" rel="noopener">https://www.runoob.com/lua/lua-strings.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Jaxes
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2019/07/16/Lua学习笔记（三）/" target="_blank" title="Lua学习笔记（三）">http://yoursite.com/2019/07/16/Lua学习笔记（三）/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/17/Lua学习笔记（四）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Lua学习笔记（四）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/15/Lua学习笔记（二）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Lua学习笔记（二）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lua函数"><span class="nav-number">1.</span> <span class="nav-text">Lua函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数定义"><span class="nav-number">1.1.</span> <span class="nav-text">函数定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可变参数"><span class="nav-number">1.2.</span> <span class="nav-text">可变参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lua运算符"><span class="nav-number">2.</span> <span class="nav-text">Lua运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-number">2.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系运算符"><span class="nav-number">2.2.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">2.3.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他运算符"><span class="nav-number">2.4.</span> <span class="nav-text">其他运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符优先级"><span class="nav-number">2.5.</span> <span class="nav-text">运算符优先级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lua字符串"><span class="nav-number">3.</span> <span class="nav-text">Lua字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串表示方法"><span class="nav-number">3.1.</span> <span class="nav-text">字符串表示方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转义字符"><span class="nav-number">3.2.</span> <span class="nav-text">转义字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串操作"><span class="nav-number">3.3.</span> <span class="nav-text">字符串操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串格式化"><span class="nav-number">3.4.</span> <span class="nav-text">字符串格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配模式"><span class="nav-number">3.5.</span> <span class="nav-text">匹配模式</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p id="copyRightEn">Copyright &copy; 2018 - 2019 Jaxes的博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+  
+           <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+			
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1275142962&web_id=1275142962" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Jaxes的博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Jaxes All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

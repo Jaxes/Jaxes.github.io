@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>lua学习笔记（一） | Jaxes的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Lua">
+  
+  
+  
+  
+  <meta name="description" content="注释12345678-- 单行注释--[[多行注释]]-- 等号数量只要两边一致即可--[=[多行注释]=] 标识符A-Z、a-z、下划线_开头后加上0个或多个字母、下划线、数字（0-9） 注意：最好不要使用下划线加大写字母，Lua保留字也是如此 不允许特殊字符@、$、%定义标识符 区分大小写 关键词1234-- Lua的保留关键字and break do else elseif end fals">
+<meta name="keywords" content="Lua">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lua学习笔记（一）">
+<meta property="og:url" content="http://yoursite.com/2019/07/15/Lua学习笔记（一）/index.html">
+<meta property="og:site_name" content="Jaxes的博客">
+<meta property="og:description" content="注释12345678-- 单行注释--[[多行注释]]-- 等号数量只要两边一致即可--[=[多行注释]=] 标识符A-Z、a-z、下划线_开头后加上0个或多个字母、下划线、数字（0-9） 注意：最好不要使用下划线加大写字母，Lua保留字也是如此 不允许特殊字符@、$、%定义标识符 区分大小写 关键词1234-- Lua的保留关键字and break do else elseif end fals">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-20T03:31:10.343Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lua学习笔记（一）">
+<meta name="twitter:description" content="注释12345678-- 单行注释--[[多行注释]]-- 等号数量只要两边一致即可--[=[多行注释]=] 标识符A-Z、a-z、下划线_开头后加上0个或多个字母、下划线、数字（0-9） 注意：最好不要使用下划线加大写字母，Lua保留字也是如此 不允许特殊字符@、$、%定义标识符 区分大小写 关键词1234-- Lua的保留关键字and break do else elseif end fals">
+  
+    <link rel="alternate" href="/atom.xml" title="Jaxes的博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/myhead.jpg">
+  <link rel="apple-touch-icon" href="/css/images/myhead.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/myhead.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">文章</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Lua学习笔记（一）" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      Lua学习笔记（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/15/Lua学习笔记（一）/" class="article-date">
+	  <time datetime="2019-07-15T01:27:00.000Z" itemprop="datePublished">2019-07-15</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Lua/">Lua</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">多行注释</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 等号数量只要两边一致即可</span></span><br><span class="line"><span class="comment">--[=[多行注释]=]</span></span><br></pre></td></tr></table></figure>
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>A-Z、a-z、下划线_开头后加上0个或多个字母、下划线、数字（0-9）</p>
+<p><strong>注意</strong>：最好不要使用下划线加大写字母，Lua保留字也是如此</p>
+<p>不允许特殊字符@、$、%定义标识符</p>
+<p>区分大小写</p>
+<h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- Lua的保留关键字</span></span><br><span class="line"><span class="keyword">and</span> <span class="keyword">break</span> <span class="keyword">do</span> <span class="keyword">else</span> <span class="keyword">elseif</span> <span class="keyword">end</span> <span class="literal">false</span> <span class="keyword">for</span> <span class="function"><span class="keyword">function</span> <span class="title">if</span> <span class="title">in</span> <span class="title">local</span> <span class="title">nil</span> <span class="title">not</span> <span class="title">or</span> <span class="title">repeat</span> <span class="title">return</span> <span class="title">then</span> <span class="title">true</span> <span class="title">until</span> <span class="title">while</span></span></span><br><span class="line"><span class="function"><span class="comment">-- 一般约定，以下划线开头连接一串大写字母的名字（如_VERSION）被保留用于Lua内部全局变量</span></span></span><br><span class="line"><span class="function"><span class="title">_VERSION</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">默认情况下变量认为是全局的，不需要声明，赋值后即创建了这个全局变量，访问一个没有初始化的全局变量不会出错，会返回nil</span></span><br><span class="line"><span class="comment">--]]</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment">-- 返回nil</span></span><br><span class="line">b=<span class="number">10</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment">-- 返回10</span></span><br><span class="line"><span class="comment">-- 如果要删除一个全局变量，只需要将变量赋值为nil</span></span><br><span class="line">b=<span class="literal">nil</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment">-- 返回nil</span></span><br></pre></td></tr></table></figure>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- Lua是动态类型语言，不需要定义，只需要赋值。值可以储存在变量中，作为参数传递或结果返回</span></span><br><span class="line"><span class="comment">-- 8个基本类型nil、boolean、number、string、userdata、function、thread、table</span></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">nil			只有值nil属于该类，表示一个无效值（在条件表达式中相当于false）</span></span><br><span class="line"><span class="comment">boolean		包含两个值：false和true</span></span><br><span class="line"><span class="comment">number		双精度类型的实浮点数</span></span><br><span class="line"><span class="comment">string		字符串由一对双引号或单引号来表示</span></span><br><span class="line"><span class="comment">function	由C或Lua编写的函数</span></span><br><span class="line"><span class="comment">userdata	表示任意存储在变量中的C数据结构</span></span><br><span class="line"><span class="comment">thread		表示执行的独立线程，用于执行协程</span></span><br><span class="line"><span class="comment">table		Lua中的表是一个“关联数组”，数组的索引可以是数字、字符串或表类型。在Lua里，table的创建时通过“构造表达式”来完成，最简单构造表达式是&#123;&#125;，用来创建一个空表</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="built_in">type</span>() <span class="comment">-- 该函数可以测试给定变量或者值得类型</span></span><br></pre></td></tr></table></figure>
+<h3 id="nil（空）"><a href="#nil（空）" class="headerlink" title="nil（空）"></a>nil（空）</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- nil类型表示没有任何有效值，它只有一个值nil</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a)) <span class="comment">-- 输出nil</span></span><br><span class="line"><span class="comment">-- 对于全局变量和table，nil有删除的作用</span></span><br><span class="line">tab1=&#123;key1=<span class="string">"val1"</span>,key2=<span class="string">"val2"</span>,<span class="string">"val3"</span>&#125;</span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> <span class="built_in">pairs</span>(tab1) <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">print</span>(k .. <span class="string">" - "</span> .. v) <span class="comment">-- ..运算符用于连接字符串</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">tab1.key1=<span class="literal">nil</span></span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> <span class="built_in">pairs</span>(tab1) <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">print</span>(k .. <span class="string">" - "</span> .. v)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h3 id="boolean（布尔）"><a href="#boolean（布尔）" class="headerlink" title="boolean（布尔）"></a>boolean（布尔）</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 只有两个可选值：false、true，Lua把false和nil看作是“假”，其他的都为真</span></span><br><span class="line"><span class="keyword">if</span> <span class="literal">false</span> <span class="keyword">or</span> <span class="literal">nil</span> <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"至少有一个是true"</span>)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"false和nil都为false！"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">-- 执行结果为false和nil都为false！</span></span><br></pre></td></tr></table></figure>
+<h3 id="number（数字）"><a href="#number（数字）" class="headerlink" title="number（数字）"></a>number（数字）</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- Lua默认只有一种number类型 double（双精度）类型</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(<span class="number">2</span>))		<span class="comment">-- 输出number</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(<span class="number">2e+1</span>))	<span class="comment">-- 输出number</span></span><br></pre></td></tr></table></figure>
+<h3 id="string（字符串）"><a href="#string（字符串）" class="headerlink" title="string（字符串）"></a>string（字符串）</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">string1=<span class="string">"this is string1"</span></span><br><span class="line">string2=<span class="string">"this is string2"</span></span><br><span class="line"><span class="comment">-- 也可以用两个方括号“[[]]”来表示“一块”字符串，输出时会将换行和制表等格式也输出</span></span><br><span class="line">string3=<span class="string">[[</span></span><br><span class="line"><span class="string">emmmmmmmmmm</span></span><br><span class="line"><span class="string">aaaaaaaaaaa</span></span><br><span class="line"><span class="string">ruaruaruaruarua!</span></span><br><span class="line"><span class="string">]]</span></span><br><span class="line"><span class="comment">-- 对一个数字字符串进行算术操作，Lua会尝试将这个数字字符串转成一个数字</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"2"</span>+<span class="number">6</span>)		<span class="comment">-- 输出8.0</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"-2e2"</span>*<span class="string">"6"</span>)	<span class="comment">-- 输出-1200.0</span></span><br><span class="line"><span class="comment">-- 字符串连接使用..操作符，注意操作对象如果为数字，则操作对象与操作符之间需要加空格</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"2"</span>..<span class="string">"b"</span>)		<span class="comment">-- 输出2b</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">233</span> .. <span class="number">666</span>)	<span class="comment">-- 输出233666</span></span><br><span class="line"><span class="comment">-- 使用#来计算字符串长度，放在字符串前面</span></span><br><span class="line"><span class="built_in">len</span>=<span class="string">"www.rua.com"</span></span><br><span class="line"><span class="built_in">print</span>(#<span class="built_in">len</span>)				<span class="comment">-- 输出11</span></span><br><span class="line"><span class="built_in">print</span>(#<span class="string">"helloworld"</span>)	<span class="comment">-- 输出10</span></span><br></pre></td></tr></table></figure>
+<h3 id="table（表）"><a href="#table（表）" class="headerlink" title="table（表）"></a>table（表）</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建一个空表</span></span><br><span class="line"><span class="keyword">local</span> tbl1=&#123;&#125;</span><br><span class="line"><span class="comment">-- 直接初始表</span></span><br><span class="line"><span class="keyword">local</span> tbl2=&#123;<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>&#125;</span><br><span class="line"><span class="comment">-- 创建键值对</span></span><br><span class="line">a[<span class="string">"key"</span>]=<span class="string">"value"</span></span><br><span class="line">a[<span class="number">1</span>]=<span class="number">22</span></span><br><span class="line">key=<span class="number">10</span>	<span class="comment">-- 这里只是赋值，赋值后用于后面的创建键值对</span></span><br><span class="line">a[key]=<span class="number">22</span></span><br><span class="line">a[a[key]]=a[key]+<span class="number">11</span></span><br><span class="line"><span class="comment">-- 在Lua中，默认初始索引一般以1开始</span></span><br><span class="line"><span class="keyword">local</span> tb1=&#123;<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>&#125;</span><br><span class="line"><span class="keyword">for</span> key,val <span class="keyword">in</span> <span class="built_in">pairs</span>(tb1) <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Key"</span>,key)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">输出：</span></span><br><span class="line"><span class="comment">Key 1</span></span><br><span class="line"><span class="comment">Key 2</span></span><br><span class="line"><span class="comment">Key 3</span></span><br><span class="line"><span class="comment">]]</span></span><br><span class="line"><span class="comment">-- table的长度是动态增长的</span></span><br></pre></td></tr></table></figure>
+<h3 id="function（函数）"><a href="#function（函数）" class="headerlink" title="function（函数）"></a>function（函数）</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 在Lua中，函数是被看作“第一类值（First-Class Value）”，函数可以存在变量里</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun1</span><span class="params">(n)</span></span>	<span class="comment">-- 一个递归求阶乘的函数</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> n*fun1(n<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">print</span>(fun1(<span class="number">5</span>))		<span class="comment">-- 输出120</span></span><br><span class="line">fun2=fun1</span><br><span class="line"><span class="built_in">print</span>(fun2(<span class="number">5</span>))		<span class="comment">-- 输出120</span></span><br><span class="line"><span class="comment">-- 也可以使用匿名函数的形式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFun</span><span class="params">(tab,fun)</span></span></span><br><span class="line">    <span class="keyword">for</span> k,v <span class="keyword">in</span> <span class="built_in">pairs</span>(tab) <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">print</span>(fun(k,v))</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">tab=&#123;kay1=<span class="string">"val1"</span>,key2=<span class="string">"val2"</span>&#125;</span><br><span class="line">testFun(tab,</span><br><span class="line">	<span class="function"><span class="keyword">function</span><span class="params">(key,val)</span></span></span><br><span class="line">        <span class="keyword">return</span> key .. <span class="string">"="</span> .. val</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">执行结果:</span></span><br><span class="line"><span class="comment">key1=val1</span></span><br><span class="line"><span class="comment">key2=val2</span></span><br><span class="line"><span class="comment">]]</span></span><br></pre></td></tr></table></figure>
+<h3 id="thread（线程）"><a href="#thread（线程）" class="headerlink" title="thread（线程）"></a>thread（线程）</h3><p>Lua中主要的线程是协程（coroutine）</p>
+<p>线程可以同时多个运行，协程任意时刻智能运行一个</p>
+<h3 id="userdata（自定义类型）"><a href="#userdata（自定义类型）" class="headerlink" title="userdata（自定义类型）"></a>userdata（自定义类型）</h3><p>用户自定义数据，用于表示一种由应用程序或C/C++语言库所创建的类型，可以将任意C/C++的任意数据类型的数据（通常是struct和指针）存储到Lua变量中调用</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Jaxes
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2019/07/15/Lua学习笔记（一）/" target="_blank" title="Lua学习笔记（一）">http://yoursite.com/2019/07/15/Lua学习笔记（一）/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/15/Lua学习笔记（二）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Lua学习笔记（二）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/27/Unity3D学习笔记之UGUI：Canvas/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Unity3D学习笔记之UGUI：Canvas</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">1.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标识符"><span class="nav-number">2.</span> <span class="nav-text">标识符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键词"><span class="nav-number">3.</span> <span class="nav-text">关键词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局变量"><span class="nav-number">4.</span> <span class="nav-text">全局变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">5.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nil（空）"><span class="nav-number">5.1.</span> <span class="nav-text">nil（空）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#boolean（布尔）"><span class="nav-number">5.2.</span> <span class="nav-text">boolean（布尔）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#number（数字）"><span class="nav-number">5.3.</span> <span class="nav-text">number（数字）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#string（字符串）"><span class="nav-number">5.4.</span> <span class="nav-text">string（字符串）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#table（表）"><span class="nav-number">5.5.</span> <span class="nav-text">table（表）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function（函数）"><span class="nav-number">5.6.</span> <span class="nav-text">function（函数）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thread（线程）"><span class="nav-number">5.7.</span> <span class="nav-text">thread（线程）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#userdata（自定义类型）"><span class="nav-number">5.8.</span> <span class="nav-text">userdata（自定义类型）</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p id="copyRightEn">Copyright &copy; 2018 - 2019 Jaxes的博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+  
+           <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+			
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1275142962&web_id=1275142962" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Jaxes的博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Jaxes All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
